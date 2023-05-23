@@ -8,6 +8,6 @@ Este es el repositorio de los desafíos del Discord de la app de la Copa Liberta
 
 3° Desafío backend: PENDIENTE
 
-4° Desafío frontend: PENDIENTE
+4° Desafío frontend: Resuelto en el merge #1 por [jeremias-cuello](https://github.com/jeremias-cuello)
 
 
