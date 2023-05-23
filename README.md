@@ -1,4 +1,4 @@
-# Dessafío técnico: Libertadores 2023
+# Desafío técnico: Libertadores 2023
 
 Este es el repositorio de los desafíos del Discord de la app de la Copa Libertadores 2023
 
