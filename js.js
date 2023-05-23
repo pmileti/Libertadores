@@ -1,33 +1,51 @@
-const Libertadores=["GRUPO A", "GRUPO B", "GRUPO C", "GRUPO D", "GRUPO E", "GRUPO F", "GRUPO G", "GRUPO H"];
-let marco= document.getElementById("marco");
+fetch('https://libertadores-1-r1902821.deta.app/libertadores/2023')
+    .then(response => response.json())
+    .then(groups => {
+        for (const key in groups)
+            addSquad(key, groups[key]);
+    })
+    .catch(err => alert('ocurrio un error al llamar la api :(' + err))
+
+/**
+ * Setea un InputElement agregando el nombre del equipo
+ * @param {string} idInp id del InputElement
+ * @param {string} squad nombre del equipo
+ */
+const addSquad = (idInp, squad) => {
+    document.getElementById(idInp).value = squad;
+}
+
+const Libertadores = ["GRUPO A", "GRUPO B", "GRUPO C", "GRUPO D", "GRUPO E", "GRUPO F", "GRUPO G", "GRUPO H"];
+let marco = document.getElementById("marco");
 let btnRevelar = document.getElementById("btn-revelar");
 let revelado = false;
 
-Libertadores.forEach((grupo)=>{
-    let div=document.createElement('div');
-    div.id=grupo;
-    div.className="grupo";
-    div.innerText=grupo;
-    for(let i=1;i<=4;i++){
-        let input=document.createElement('input');
-        input.id=grupo + "_equipo" + i;
+
+Libertadores.forEach((grupo) => {
+    let div = document.createElement('div');
+    div.id = grupo;
+    div.className = "grupo";
+    div.innerText = grupo;
+    for (let i = 1; i <= 4; i++) {
+        let input = document.createElement('input');
+        input.id = grupo + "_equipo" + i;
         div.appendChild(input);
     }
-    marco.appendChild(div);    
+    marco.appendChild(div);
 });
 
-function campeon(){
-    if(!revelado){
-        Libertadores.forEach((grupo)=>{
+function campeon() {
+    if (!revelado) {
+        Libertadores.forEach((grupo) => {
             let num1 = Math.floor(Math.random() * 4) + 1;
             let num2 = Math.floor(Math.random() * 4) + 1;
-            while(num1===num2){
+            while (num1 === num2) {
                 num2 = Math.floor(Math.random() * 4) + 1;
             }
-            let clas1=document.getElementById(grupo + "_equipo" + num1);
-            let clas2=document.getElementById(grupo + "_equipo" + num2);
-            clas1.style.backgroundColor="yellow";
-            clas2.style.backgroundColor="yellow";
+            let clas1 = document.getElementById(grupo + "_equipo" + num1);
+            let clas2 = document.getElementById(grupo + "_equipo" + num2);
+            clas1.style.backgroundColor = "yellow";
+            clas2.style.backgroundColor = "yellow";
         });
 
         var inputs = document.querySelectorAll("input");
@@ -41,12 +59,9 @@ function campeon(){
 
         var indiceAleatorio = Math.floor(Math.random() * inputsAmarillos.length);
         var inputSeleccionado = inputsAmarillos[indiceAleatorio];
-        inputSeleccionado.style.backgroundColor="lightgreen";
-
+        inputSeleccionado.style.backgroundColor = "lightgreen";
         btnRevelar.disabled = true;
         btnRevelar.innerText = "Campeón: " + inputSeleccionado.value;
-        
         revelado = true;
     }
 }
-
