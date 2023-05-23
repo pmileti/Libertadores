@@ -1,1 +1,10 @@
-# Libertadores
+# Dessafío técnico: Libertadores 2023
+
+Este es el repositorio de los desafíos del servidor de Discord
+
+1° Desafío frontend: Resuelto en el 1er commit por Mileti
+2° Desafío frontend: Resuleto en el 2do commit por salvl
+3° Desafío backend: PENDIENTE
+4° Desafío frontend: PENDIENTE
+
+
