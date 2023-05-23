@@ -1,5 +1,7 @@
 const Libertadores=["GRUPO A", "GRUPO B", "GRUPO C", "GRUPO D", "GRUPO E", "GRUPO F", "GRUPO G", "GRUPO H"];
 let marco= document.getElementById("marco");
+let btnRevelar = document.getElementById("btn-revelar");
+let revelado = false;
 
 Libertadores.forEach((grupo)=>{
     let div=document.createElement('div');
@@ -11,41 +13,40 @@ Libertadores.forEach((grupo)=>{
         input.id=grupo + "_equipo" + i;
         div.appendChild(input);
     }
-    marco.appendChild(div);
-    
+    marco.appendChild(div);    
 });
 
-
 function campeon(){
-    Libertadores.forEach((grupo)=>{
-        let num1 = Math.floor(Math.random() * 4) + 1;
-        let num2 = Math.floor(Math.random() * 4) + 1;
-        while(num1===num2){
-            num2 = Math.floor(Math.random() * 4) + 1;
+    if(!revelado){
+        Libertadores.forEach((grupo)=>{
+            let num1 = Math.floor(Math.random() * 4) + 1;
+            let num2 = Math.floor(Math.random() * 4) + 1;
+            while(num1===num2){
+                num2 = Math.floor(Math.random() * 4) + 1;
+            }
+            let clas1=document.getElementById(grupo + "_equipo" + num1);
+            let clas2=document.getElementById(grupo + "_equipo" + num2);
+            clas1.style.backgroundColor="yellow";
+            clas2.style.backgroundColor="yellow";
+        });
+
+        var inputs = document.querySelectorAll("input");
+        var inputsAmarillos = [];
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].style.backgroundColor == "yellow") {
+                inputsAmarillos.push(inputs[i]);
+            }
         }
-        let clas1=document.getElementById(grupo + "_equipo" + num1);
-        let clas2=document.getElementById(grupo + "_equipo" + num2);
-        clas1.style.backgroundColor="yellow";
-        clas2.style.backgroundColor="yellow";
 
+        var indiceAleatorio = Math.floor(Math.random() * inputsAmarillos.length);
+        var inputSeleccionado = inputsAmarillos[indiceAleatorio];
+        inputSeleccionado.style.backgroundColor="lightgreen";
 
-
-    });
-
-var inputs = document.querySelectorAll("input");
-var inputsAmarillos = [];
-
-for (var i = 0; i < inputs.length; i++) {
-  if (inputs[i].style.backgroundColor == "yellow") {
-    inputsAmarillos.push(inputs[i]);
-  }
+        btnRevelar.disabled = true;
+        btnRevelar.innerText = "Campeón: " + inputSeleccionado.value;
+        
+        revelado = true;
+    }
 }
 
-var indiceAleatorio = Math.floor(Math.random() * inputsAmarillos.length);
-
-var inputSeleccionado = inputsAmarillos[indiceAleatorio];
-
-inputSeleccionado.style.backgroundColor="lightgreen";
-
-
-}
