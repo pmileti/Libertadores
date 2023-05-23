@@ -4,7 +4,7 @@ Este es el repositorio de los desafíos del Discord de la app de la Copa Liberta
 
 1° Desafío frontend: Resuelto en el 1er commit por Mileti
 
-2° Desafío frontend: Resuleto en el 2do commit por salvl
+2° Desafío frontend: Resuelto en el 2do commit por salvl
 
 3° Desafío backend: PENDIENTE
 
