@@ -51,6 +51,9 @@ button{
     display: block;
     margin: auto;
 }
+#btn-revelar:hover { 
+    cursor: pointer;
+}
 
 
 
