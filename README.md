@@ -10,6 +10,6 @@ Este es el repositorio de los desafíos del Discord de la app de la Copa Liberta
 
 4° Desafío frontend: Resuelto en el merge #1 por [jeremias-cuello](https://github.com/jeremias-cuello)
 
-5° Desafío frontend: Resuelto en el 4to commit por salv
+5° Desafío frontend: Resuelto en el 4to commit por salv y el 5to commit contiene un mensaje de alerta si no se cargaron los nombres de los equipos aportado por 4lejoo.
 
 
