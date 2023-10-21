@@ -5,7 +5,6 @@ fetch('https://libertadores-1-r1902821.deta.app/libertadores/2023')
             addSquad(key, groups[key]);
     })
     .catch(err => alert('ocurrio un error al llamar la api :(' + err))
-
 /**
  * Setea un InputElement agregando el nombre del equipo
  * @param {string} idInp id del InputElement
@@ -36,39 +35,46 @@ Libertadores.forEach((grupo) => {
 
 function campeon() {
     if (!revelado) {
-        btnRevelar.disabled = true; // deshabilitar el boton una vez ya pulsado
-        setTimeout(function () { // delay para evitar tocar el botón antes de que carguen los grupos
-        Libertadores.forEach((grupo) => {
-            let num1 = Math.floor(Math.random() * 4) + 1;
-            let num2 = Math.floor(Math.random() * 4) + 1;
-            while (num1 === num2) {
-                num2 = Math.floor(Math.random() * 4) + 1;
+        const inputs = document.querySelectorAll("input");
+        let isEmpty = false;
+        inputs.forEach((input) => {
+            if (input.value.trim() === "") {
+                isEmpty = true;
+                input.style.borderColor = "red";
             }
-            let clas1 = document.getElementById(grupo + "_equipo" + num1);
-            let clas2 = document.getElementById(grupo + "_equipo" + num2);
-            clas1.style.backgroundColor = "yellow";
-            clas2.style.backgroundColor = "yellow";
         });
-        }, 540);
-
-        var inputs = document.querySelectorAll("input");
-        var inputsAmarillos = [];
-
-        setTimeout(function () { 
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].style.backgroundColor == "yellow") {
-                inputsAmarillos.push(inputs[i]);
-            }
+        if (isEmpty) {
+            alert("Por favor, complete todos los campos antes de revelar al campeón.");
+            return;
         }
-    }, 2000);
-
-        setTimeout(function () { // delay para esperar antes de revelar al campeon
-        var indiceAleatorio = Math.floor(Math.random() * inputsAmarillos.length);
-        var inputSeleccionado = inputsAmarillos[indiceAleatorio];
-        inputSeleccionado.style.backgroundColor = "lightgreen";
-        btnRevelar.innerText = "Campeón: " + inputSeleccionado.value;
-        revelado = true;
+        btnRevelar.disabled = true;
+        setTimeout(function () {
+            Libertadores.forEach((grupo) => {
+                let num1 = Math.floor(Math.random() * 4) + 1;
+                let num2 = Math.floor(Math.random() * 4) + 1;
+                while (num1 === num2) {
+                    num2 = Math.floor(Math.random() * 4) + 1;
+                }
+                let clas1 = document.getElementById(grupo + "_equipo" + num1);
+                let clas2 = document.getElementById(grupo + "_equipo" + num2);
+                clas1.style.backgroundColor = "yellow";
+                clas2.style.backgroundColor = "yellow";
+            });
+        }, 540);
+        var inputsAmarillos = [];
+        setTimeout(function () {
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].style.backgroundColor == "yellow") {
+                    inputsAmarillos.push(inputs[i]);
+                }
+            }
+        }, 2000);
+        setTimeout(function () {
+            var indiceAleatorio = Math.floor(Math.random() * inputsAmarillos.length);
+            var inputSeleccionado = inputsAmarillos[indiceAleatorio];
+            inputSeleccionado.style.backgroundColor = "lightgreen";
+            btnRevelar.innerText = "Campeón: " + inputSeleccionado.value;
+            revelado = true;
         }, 2000);
     }
 }
-
